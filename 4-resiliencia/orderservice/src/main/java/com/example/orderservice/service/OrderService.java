@@ -1,0 +1,33 @@
+package com.example.orderservice.service;
+
+import org.springframework.stereotype.Service;
+
+import com.example.orderservice.entity.Order;
+import com.example.orderservice.entity.PaymentInfo;
+import com.example.orderservice.utils.RandomUtils;
+
+@Service
+public class OrderService {
+
+	public Order getOrder(int orderId) {
+		return new Order(orderId);
+	}
+
+	public PaymentInfo getPaymentInfo(Order order) {
+		PaymentInfo paymentInfo = null;
+		if (RandomUtils.random50PercentError() == 1) {
+			throw new RuntimeException();
+		} else {
+			paymentInfo = new PaymentInfo();
+		}
+		return paymentInfo;
+	}
+
+	public int getTotalItem(Order order) {
+		if (RandomUtils.random50PercentError() == 1) {
+			RandomUtils.randomSleep();
+		}
+		return RandomUtils.randomTotalItems();
+	}
+
+}
