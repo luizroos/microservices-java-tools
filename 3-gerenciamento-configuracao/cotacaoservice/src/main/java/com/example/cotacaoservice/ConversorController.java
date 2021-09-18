@@ -10,8 +10,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping(value = "/v1/moeda")
+@RefreshScope
 public class ConversorController {
 
+	@Value("${cotacaoDolar}")
 	private double COTACAO_DOLAR = 4.30;
 
 	@RequestMapping(value = "/dolarToReal/{dolar}")
